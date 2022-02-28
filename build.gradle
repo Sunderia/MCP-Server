@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'fr.minemobs'
+version '1.0.0'
+
+application {
+    mainClassName = "fr.minemobs.mcpserver.MCPServer"
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+    maven {
+        url "https://maven.fabricmc.net/"
+    }
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+dependencies {
+    implementation 'com.github.TheSimpleTeam:Colors:59450963b7'
+    implementation("net.md-5:SpecialSource:1.11.0")
+    implementation("net.fabricmc:fabric-fernflower:1.4.1")
+    implementation("commons-cli:commons-cli:1.5.0")
+    implementation("commons-io:commons-io:2.11.0")
+    implementation("commons-beanutils:commons-beanutils:1.9.4")
+    implementation("com.google.guava:guava:31.0.1-jre")
+}
+
+test {
+    useJUnitPlatform()
+}
